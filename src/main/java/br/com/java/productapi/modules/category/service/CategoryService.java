@@ -20,8 +20,8 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @Autowired
-    private ProductService productService;
+    //@Autowired
+    //private ProductService productService;
 
     public CategoryResponse findByIdResponse(Integer id){
         return CategoryResponse.of(findById(id));
@@ -78,9 +78,9 @@ public class CategoryService {
 
     public SuccessResponse delete(Integer id){
         validateInformedId(id);
-        if(productService.existsByCategoryId(id)){
-            throw new ValidationException("You cannot delete this category because it's already defined by a product.");
-        }
+        // if(productService.existsByCategoryId(id)){
+        //    throw new ValidationException("You cannot delete this category because it's already defined by a product.");
+        //}
         categoryRepository.deleteById(id);
         return SuccessResponse.create("The category was deleted.");
     }

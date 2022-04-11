@@ -21,8 +21,8 @@ public class SupplierService {
     @Autowired
     private SupplierRepository supplierRepository;
 
-    @Autowired
-    private ProductService productService;
+    //@Autowired
+    //private ProductService productService;
 
     public List<SupplierResponse> findAll(){
         return supplierRepository
@@ -77,9 +77,9 @@ public class SupplierService {
     }
     public SuccessResponse delete(Integer id){
         validateInformedId(id);
-        if(productService.existsBySupplierId(id)){
-            throw new ValidationException("You cannot delete this supplier because it's already defined by a product.");
-        }
+        //if(productService.existsBySupplierId(id)){
+        //    throw new ValidationException("You cannot delete this supplier because it's already defined by a product.");
+        //}
         supplierRepository.deleteById(id);
         return SuccessResponse.create("The supplier was deleted.");
     }
